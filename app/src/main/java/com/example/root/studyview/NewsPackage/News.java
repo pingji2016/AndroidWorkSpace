@@ -1,4 +1,4 @@
-package com.example.root.studyview.News;
+package com.example.root.studyview.NewsPackage;
 
 /**
   *

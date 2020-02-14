@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.root.studyview.MainActivity">
+    android:id="@+id/news_title_layout"
+    android:layout_height="match_parent">
 
 
     <!--<LinearLayout-->
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/news_title_fragment"
-        android:name="com.example.root.studyview.News.NewsTitleFragment"
+        android:name="com.example.root.studyview.NewsPackage.NewsTitleFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
