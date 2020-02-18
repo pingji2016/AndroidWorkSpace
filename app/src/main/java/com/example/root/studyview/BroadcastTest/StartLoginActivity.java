@@ -23,7 +23,22 @@ public class StartLoginActivity extends BroadBaseActivity {
         nameEdit = (EditText) findViewById(R.id.nameEdit);
         pwdEdit = (EditText) findViewById(R.id.pwdEdit);
         loginBtn = (Button) findViewById(R.id.signInBtn);
-        loginBtn.setOnClickListener(new MyOnClickListener());
+        nameEdit.setText("zhaofm");
+        pwdEdit.setText("123456");
+        loginBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String account = nameEdit.getText().toString();
+                String password = pwdEdit.getText().toString();
+                if (account.equals("zhaofm") && password.equals("123456")){
+                    Intent intent = new Intent(StartLoginActivity.this, MainContentActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else{
+                    Toast.makeText(StartLoginActivity.this, "Pass is Error", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 
@@ -34,7 +49,7 @@ public class StartLoginActivity extends BroadBaseActivity {
       * @param  * @param null
       * @return
       */
-    public class MyOnClickListener implements Button.OnClickListener{
+    public class MyOnClickListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
             String account = nameEdit.getText().toString();

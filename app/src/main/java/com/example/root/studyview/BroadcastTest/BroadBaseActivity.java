@@ -51,7 +51,7 @@ public class BroadBaseActivity extends AppCompatActivity {
         public void onReceive(final Context context, Intent intent) {
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("warning");
-            builder.setMessage("You adesae");
+            builder.setMessage("你被踢下线了》》》");
             builder.setCancelable(false);
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
@@ -61,6 +61,7 @@ public class BroadBaseActivity extends AppCompatActivity {
                     context.startActivity(intent);
                 }
             });
+            builder.show();
         }
     }
 
