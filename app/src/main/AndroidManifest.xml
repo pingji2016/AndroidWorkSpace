@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.root.studyview">
 
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES ">
+    </uses-permission>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE ">
+    </uses-permission>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +27,11 @@
 
         <activity android:name=".NewsPackage.NewsContentActivity">
         </activity>
+
+        <activity android:name=".BroadcastTest.MainContentActivity"/>
+        <activity android:name=".BroadcastTest.StartLoginActivity"/>
+
+        <!--<receiver android:name=""-->
     </application>
 
 </manifest>
