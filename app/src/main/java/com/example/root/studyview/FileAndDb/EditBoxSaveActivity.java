@@ -1,17 +1,24 @@
 package com.example.root.studyview.FileAndDb;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
+import com.example.root.studyview.BroadcastTest.StartLoginActivity;
 import com.example.root.studyview.Manager.FileManager;
+import com.example.root.studyview.Manager.MyActivityManger;
 import com.example.root.studyview.R;
 
 import org.w3c.dom.Text;
@@ -29,6 +36,7 @@ import static java.lang.System.out;
 public class EditBoxSaveActivity extends AppCompatActivity {
     private static final String TAG = "EditBoxSaveActivity";
     private EditText editText;
+    private int count = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +51,50 @@ public class EditBoxSaveActivity extends AppCompatActivity {
             editText.setSelection(inputStr.length());
             Toast.makeText(this, "XXX", Toast.LENGTH_SHORT).show();
         }
+
+
+        initData();
+
+        Button sharePerferences = (Button) findViewById(R.id.shanePreferencesBtn);
+        sharePerferences.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                count = count + 1;
+                Toast.makeText(EditBoxSaveActivity.this, "count add +1", Toast.LENGTH_SHORT).show();
+                SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();
+                editor.putString("name", "Tom@#@#");
+                editor.putInt("age", 28);
+                editor.putInt("count", count);
+                editor.putBoolean("married", false);
+                editor.apply();
+            }
+        });
+
+        Button  getSharedBtn = (Button) findViewById(R.id.getSharedBtn);
+        getSharedBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                SharedPreferences per = getSharedPreferences("data",MODE_PRIVATE);
+                String name = per.getString("name", "");
+                int age = per.getInt("age", 0);
+                count = per.getInt("count", 0);
+                boolean married = per.getBoolean("married", false);
+
+                Toast.makeText(EditBoxSaveActivity.this, name + count, Toast.LENGTH_SHORT).show();
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle(name);
+                builder.setMessage("count ="+ count + "\n age = " + age + "\n married = " + married);
+                builder.setCancelable(false);
+                builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(EditBoxSaveActivity.this, "電話", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.show();            }
+        });
     }
 
     @Override
@@ -50,6 +102,12 @@ public class EditBoxSaveActivity extends AppCompatActivity {
         super.onDestroy();
         String inputText = editText.getText().toString();
         save(inputText);
+    }
+
+
+    private void initData(){
+        SharedPreferences per = getSharedPreferences("data",MODE_PRIVATE);
+        count = per.getInt("count", 0);
     }
 
     private void save(String inputString) {

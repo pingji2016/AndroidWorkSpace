@@ -5,13 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editsave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="输入框"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="46dp"
-        tools:layout_editor_absoluteY="31dp" />
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="350dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="145dp">
+
+        <Button
+            android:id="@+id/shanePreferencesBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sharePerferences"
+            tools:layout_editor_absoluteX="181dp"
+            tools:layout_editor_absoluteY="213dp" />
+
+        <Button
+            android:id="@+id/getSharedBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取"
+            tools:layout_editor_absoluteX="228dp"
+            tools:layout_editor_absoluteY="97dp" />
+
+        <EditText
+            android:id="@+id/editsave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="输入框"
+            android:inputType="textEmailAddress"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="261dp" />
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
