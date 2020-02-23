@@ -16,7 +16,9 @@ import android.widget.EditText;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
 
+import com.example.root.studyview.BookPackage.BuyBookActivity;
 import com.example.root.studyview.BroadcastTest.StartLoginActivity;
+import com.example.root.studyview.MainActivity;
 import com.example.root.studyview.Manager.FileManager;
 import com.example.root.studyview.Manager.MyActivityManger;
 import com.example.root.studyview.R;
@@ -93,7 +95,17 @@ public class EditBoxSaveActivity extends AppCompatActivity {
                         Toast.makeText(EditBoxSaveActivity.this, "電話", Toast.LENGTH_SHORT).show();
                     }
                 });
-                builder.show();            }
+                builder.show();
+            }
+        });
+
+        Button litePanlBtn = (Button) findViewById(R.id.litepalBtn);
+        litePanlBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EditBoxSaveActivity.this, BuyBookActivity.class);
+                startActivity(intent);
+            }
         });
     }
 

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Button
+            android:id="@+id/buyBookBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="建立,添加"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="过滤" />
+
+        <Button
+            android:id="@+id/quaryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询" />
+
+        <Button
+            android:id="@+id/delBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
