@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.root.studyview.BroadcastTest.StartLoginActivity;
+import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
 import com.example.root.studyview.NewsPackage.NewsContentActivity;
 
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn1;
     private Button btn2;
     private Button btn3;
+    private Button btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
         btn3 = (Button) findViewById(R.id.btn3);
+        btn4 = (Button) findViewById(R.id.btn4);
 
         btn1.setOnClickListener(new onClickListenerClass());
         btn2.setOnClickListener(new onClickListenerClass());
         btn3.setOnClickListener(new onClickListenerClass());
+        btn4.setOnClickListener(new onClickListenerClass());
     }
 
     private class onClickListenerClass implements Button.OnClickListener{
@@ -39,8 +43,11 @@ public class MainActivity extends AppCompatActivity {
             }else if (view == btn2){ // 进入文件保存
                 Intent intent = new Intent(MainActivity.this, EditBoxSaveActivity.class);
                 startActivity(intent);
-            }else {// 进入广播
+            }else if (view == btn3){// 进入广播
                 Intent intent = new Intent(MainActivity.this, StartLoginActivity.class);
+                startActivity(intent);
+            }else {// 进入广播
+                Intent intent = new Intent(MainActivity.this, ReadPhoneActivity.class);
                 startActivity(intent);
             }
         }

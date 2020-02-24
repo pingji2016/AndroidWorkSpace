@@ -30,5 +30,12 @@
             android:layout_height="wrap_content"
             android:text="广播" />
 
+        <Button
+            android:id="@+id/btn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="联系人读取" />
+
     </LinearLayout>
 </FrameLayout>

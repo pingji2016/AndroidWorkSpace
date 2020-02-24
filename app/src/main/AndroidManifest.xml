@@ -2,16 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.root.studyview">
 
-    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES ">
-    </uses-permission>
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE ">
-    </uses-permission>
-
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES "></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE "></uses-permission>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--<uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/> -->
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -27,15 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".NewsPackage.NewsContentActivity">
-        </activity>
-
-        <activity android:name=".BroadcastTest.MainContentActivity"/>
-        <activity android:name=".BroadcastTest.StartLoginActivity"/>
-        <activity android:name=".FileAndDb.EditBoxSaveActivity"/>
-        <activity android:name=".BookPackage.BuyBookActivity"/>
-        <!--<receiver android:name=""-->
+        <activity android:name=".NewsPackage.NewsContentActivity"></activity>
+        <activity android:name=".BroadcastTest.MainContentActivity" />
+        <activity android:name=".BroadcastTest.StartLoginActivity" />
+        <activity android:name=".FileAndDb.EditBoxSaveActivity" />
+        <activity android:name=".BookPackage.BuyBookActivity" />
+        <activity android:name=".ContentProvider.ReadPhoneActivity" />
+        <!-- <receiver android:name="" -->
+        <provider
+            android:name=".MyContentProvider"
+            android:authorities="com.example.root.studyview.BookPackage.provider"
+            android:enabled="true"
+            android:exported="true"></provider>
     </application>
 
 </manifest>
