@@ -20,6 +20,7 @@ import java.io.File;
 
 public class MyPlayerActivity extends AppCompatActivity implements View.OnClickListener{
     private Button stop_btn;
+
     private Button play_btn;
 
     private Button pause_btn;
