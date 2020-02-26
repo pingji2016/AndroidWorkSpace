@@ -6,10 +6,29 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/media_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Media"/>
+
+    <Button
+        android:id="@+id/notify_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NOtify"/>
+
+
+    <Button
         android:id="@+id/photo_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Take Ponto"/>
+        android:text="拍照"/>
+
+    <Button
+        android:id="@+id/choose_from_album"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="相册"/>
 
     <ImageView
         android:id="@+id/picture"

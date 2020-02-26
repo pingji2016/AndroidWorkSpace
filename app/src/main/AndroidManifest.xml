@@ -32,6 +32,7 @@
         <activity android:name=".BookPackage.BuyBookActivity" />
         <activity android:name=".ContentProvider.ReadPhoneActivity" />
         <activity android:name=".Notification.MyNotificationActivity" />
+        <activity android:name=".Notification.MyPlayerActivity" />
         <!-- <receiver android:name="" -->
         <!--<provider-->
             <!--android:name=".MyContentProvider"-->
