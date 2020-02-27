@@ -17,6 +17,12 @@
         android:layout_height="wrap_content"
         android:text="XmL Pull" />
 
+    <Button
+        android:id="@+id/sax_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XmL SAX" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -12,10 +12,14 @@ import android.widget.TextView;
 
 import com.example.root.studyview.R;
 
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.StringReader;
+
+import javax.xml.parsers.SAXParserFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -35,9 +39,13 @@ public class WebViewAcitvity extends AppCompatActivity implements View.OnClickLi
 
         Button web_btn = (Button)findViewById(R.id.web_btn);
         Button xml_btn = (Button)findViewById(R.id.xml_btn);
+        Button sax_btn = (Button)findViewById(R.id.sax_btn);
+
         responseText = (TextView)findViewById(R.id.response_text);
+
         web_btn.setOnClickListener(this);
         xml_btn.setOnClickListener(this);
+        sax_btn.setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +54,8 @@ public class WebViewAcitvity extends AppCompatActivity implements View.OnClickLi
             sendRequestOkHttp();
         }else if (view.getId() == R.id.xml_btn) {
             sendRequestOkHttp2();
+        }else if (view.getId() == R.id.sax_btn) {
+            sendRequestOkHttp3();
         }
     }
 
@@ -89,6 +99,26 @@ public class WebViewAcitvity extends AppCompatActivity implements View.OnClickLi
         }).start();
     }
 
+    public void sendRequestOkHttp3(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    OkHttpClient client = new OkHttpClient();
+                    Request request = new Request.Builder()
+                            .url("http://192.168.199.228:81/app.xml")
+                            .build();
+
+                    Response response = client.newCall(request).execute();
+                    String responeData = response.body().string();
+                    parseXMLWithSAX(responeData);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
     public void showResopnse(final String responses) {
         runOnUiThread(new Runnable() {
             @Override
@@ -96,6 +126,20 @@ public class WebViewAcitvity extends AppCompatActivity implements View.OnClickLi
                 responseText.setText(responses);
             }
         });
+    }
+
+    public void parseXMLWithSAX(final String xmlData) {
+        try {
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+            ContentHandler handler = new ContentHandler();
+
+            xmlReader.setContentHandler(handler);
+
+            xmlReader.parse(new InputSource(new StringReader(xmlData)));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void showXMLResopnse(final String xmlData) {
