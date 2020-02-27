@@ -11,6 +11,7 @@ import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
 import com.example.root.studyview.NewsPackage.NewsContentActivity;
 import com.example.root.studyview.Notification.MyNotificationActivity;
+import com.example.root.studyview.Web.WebViewAcitvity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn3;
     private Button btn4;
     private Button btn5;
+    private Button btn6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
         btn3 = (Button) findViewById(R.id.btn3);
         btn4 = (Button) findViewById(R.id.btn4);
         btn5 = (Button) findViewById(R.id.btn5);
+        btn6 = (Button) findViewById(R.id.btn6);
 
         btn1.setOnClickListener(new onClickListenerClass());
         btn2.setOnClickListener(new onClickListenerClass());
         btn3.setOnClickListener(new onClickListenerClass());
         btn4.setOnClickListener(new onClickListenerClass());
         btn5.setOnClickListener(new onClickListenerClass());
+        btn6.setOnClickListener(new onClickListenerClass());
     }
 
     private class onClickListenerClass implements Button.OnClickListener{
@@ -53,8 +57,11 @@ public class MainActivity extends AppCompatActivity {
             }else if (view == btn4){// 进入广播
                 Intent intent = new Intent(MainActivity.this, ReadPhoneActivity.class);
                 startActivity(intent);
-            }else {// 进入通知
+            }else if (view == btn5){// 进入通知
                 Intent intent = new Intent(MainActivity.this, MyNotificationActivity.class);
+                startActivity(intent);
+            }else if (view == btn6){// 进入通知
+                Intent intent = new Intent(MainActivity.this, WebViewAcitvity.class);
                 startActivity(intent);
             }
         }

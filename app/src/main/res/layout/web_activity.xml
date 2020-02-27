@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/web_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="百度" />
+
+    <Button
+        android:id="@+id/xml_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="XmL Pull" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/response_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
+
+</LinearLayout>
