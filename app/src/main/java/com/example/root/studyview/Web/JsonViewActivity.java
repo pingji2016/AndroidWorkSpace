@@ -8,11 +8,16 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.root.studyview.R;
+import com.example.root.studyview.Util.HttpUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.util.List;
 
+import okhttp3.Call;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -27,13 +32,32 @@ public class JsonViewActivity extends AppCompatActivity implements View.OnClickL
         Button json_btn = (Button)findViewById(R.id.json_btn);
         json_btn.setOnClickListener(this);
 
+        Button httpUitl_btn = (Button)findViewById(R.id.httpUitl_btn);
+        httpUitl_btn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.json_btn){
             sendRequest();
+        }else if (view.getId() == R.id.httpUitl_btn){
+            sendRequest2();
         }
+    }
+
+    public void sendRequest2(){
+        HttpUtil.sendHttpRequest("http://192.168.199.228:81/app.json",new okhttp3.Callback(){
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                String requeseData = response.body().string();
+                Log.i(TAG, "@@onResponse: "+ requeseData);
+            }
+        });
     }
 
     public void sendRequest(){
