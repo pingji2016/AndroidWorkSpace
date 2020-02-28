@@ -11,6 +11,7 @@ import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
 import com.example.root.studyview.NewsPackage.NewsContentActivity;
 import com.example.root.studyview.Notification.MyNotificationActivity;
+import com.example.root.studyview.Web.JsonViewActivity;
 import com.example.root.studyview.Web.WebViewAcitvity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btn4;
     private Button btn5;
     private Button btn6;
+    private Button btn7;
+    private Button btn8;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         btn4 = (Button) findViewById(R.id.btn4);
         btn5 = (Button) findViewById(R.id.btn5);
         btn6 = (Button) findViewById(R.id.btn6);
+        btn7 = (Button) findViewById(R.id.btn7);
+        btn8 = (Button) findViewById(R.id.btn8);
 
         btn1.setOnClickListener(new onClickListenerClass());
         btn2.setOnClickListener(new onClickListenerClass());
@@ -40,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new onClickListenerClass());
         btn5.setOnClickListener(new onClickListenerClass());
         btn6.setOnClickListener(new onClickListenerClass());
+        btn7.setOnClickListener(new onClickListenerClass());
+        btn8.setOnClickListener(new onClickListenerClass());
     }
 
     private class onClickListenerClass implements Button.OnClickListener{
@@ -61,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MyNotificationActivity.class);
                 startActivity(intent);
             }else if (view == btn6){// 进入通知
+                Intent intent = new Intent(MainActivity.this, WebViewAcitvity.class);
+                startActivity(intent);
+            }else if (view == btn7){// 进入通知
+                Intent intent = new Intent(MainActivity.this, JsonViewActivity.class);
+                startActivity(intent);
+            }else if (view == btn8){// 进入通知
                 Intent intent = new Intent(MainActivity.this, WebViewAcitvity.class);
                 startActivity(intent);
             }
