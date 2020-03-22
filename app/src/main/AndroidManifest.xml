@@ -36,6 +36,7 @@
         <activity android:name=".Notification.MyPlayerActivity" />
         <activity android:name=".Web.WebViewAcitvity" />
         <activity android:name=".Web.JsonViewActivity" />
+        <activity android:name=".Services.BtnChangeTextActivity" />
         <!-- <receiver android:name="" -->
         <!--<provider-->
             <!--android:name=".MyContentProvider"-->

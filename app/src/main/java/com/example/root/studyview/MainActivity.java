@@ -11,6 +11,7 @@ import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
 import com.example.root.studyview.NewsPackage.NewsContentActivity;
 import com.example.root.studyview.Notification.MyNotificationActivity;
+import com.example.root.studyview.Services.BtnChangeTextActivity;
 import com.example.root.studyview.Web.JsonViewActivity;
 import com.example.root.studyview.Web.WebViewAcitvity;
 
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn6;
     private Button btn7;
     private Button btn8;
+    private Button btn9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         btn6 = (Button) findViewById(R.id.btn6);
         btn7 = (Button) findViewById(R.id.btn7);
         btn8 = (Button) findViewById(R.id.btn8);
+        btn9 = (Button) findViewById(R.id.btn9);
 
         btn1.setOnClickListener(new onClickListenerClass());
         btn2.setOnClickListener(new onClickListenerClass());
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new onClickListenerClass());
         btn7.setOnClickListener(new onClickListenerClass());
         btn8.setOnClickListener(new onClickListenerClass());
+        btn9.setOnClickListener(new onClickListenerClass());
     }
 
     private class onClickListenerClass implements Button.OnClickListener{
@@ -109,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }else if (view == btn8){// 进入通知
                 Intent intent = new Intent(MainActivity.this, WebViewAcitvity.class);
+                startActivity(intent);
+            }else if (view == btn9){// 进入通知
+                Intent intent = new Intent(MainActivity.this, BtnChangeTextActivity.class);
                 startActivity(intent);
             }
         }

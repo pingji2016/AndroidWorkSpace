@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp">
+
+        <TextView
+            android:id="@+id/text_change"
+            android:layout_width="171dp"
+            android:layout_height="44dp"
+            android:text="TextView"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="7dp" />
+
+        <Button
+            android:id="@+id/btn_change_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="改变"
+            tools:layout_editor_absoluteX="183dp"
+            tools:layout_editor_absoluteY="3dp" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
