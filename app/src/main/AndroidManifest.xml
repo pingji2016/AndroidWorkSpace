@@ -2,14 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.root.studyview">
 
-    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES "></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE "></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES " />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE " />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/> -->
     <application
         android:name="org.litepal.LitePalApplication"
@@ -26,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewsPackage.NewsContentActivity"></activity>
+        <activity android:name=".NewsPackage.NewsContentActivity" />
         <activity android:name=".BroadcastTest.MainContentActivity" />
         <activity android:name=".BroadcastTest.StartLoginActivity" />
         <activity android:name=".FileAndDb.EditBoxSaveActivity" />
@@ -38,21 +39,26 @@
         <activity android:name=".Web.JsonViewActivity" />
         <activity android:name=".Services.BtnChangeTextActivity" />
         <!-- <receiver android:name="" -->
-        <!--<provider-->
-            <!--android:name=".MyContentProvider"-->
-            <!--android:authorities="com.example.root.studyview.BookPackage.provider"-->
-            <!--android:enabled="true"-->
-            <!--android:exported="true"></provider>-->
+        <!-- <provider -->
+        <!-- android:name=".MyContentProvider" -->
+        <!-- android:authorities="com.example.root.studyview.BookPackage.provider" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="true"></provider> -->
 
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.root.studyview.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
+
+        <service
+            android:name=".Services.DownloadService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
