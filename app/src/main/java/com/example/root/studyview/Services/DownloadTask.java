@@ -2,6 +2,7 @@ package com.example.root.studyview.Services;
 
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -14,6 +15,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class DownloadTask extends AsyncTask<String, Integer, Integer> {
+    private static final String TAG = "DownloadTask";
+
     private  DownloadListener listener;
 
     private static final int TYPE_SUCCESS = 0;
@@ -46,6 +49,8 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                 downloadLength = file.length();
             }
             long contentLength = getContentLength(downloadUrl);
+            Log.i(TAG, "doInBackground: "+ contentLength);
+
             if (0 == contentLength){
                 return TYPE_FAILED;
             }else if (contentLength == downloadLength){
@@ -61,20 +66,25 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
             Response response = client.newCall(request).execute();
             if (response != null){
                 is = response.body().byteStream();
+                savedFile = new RandomAccessFile(file, "rw");
                 savedFile.seek(downloadLength);
                 byte[] b = new byte[1024];
                 int total = 0;
-                int len;
-                while (((len = is.read(b))!= -1)){
+                int len = is.read(b);
+
+                while ((len = is.read(b))!= -1){
                     if (isCanceled){
                         return TYPE_CANCELED;
                     }else {
                         total += len;
                         savedFile.write(b, 0 ,len);
                         int progerss = (int)((total + downloadLength)*100 / contentLength);
+                        Log.i(TAG, "doInBackground: @#@#@");
                         publishProgress(progerss);
                     }
                 }
+                response.close();
+                return TYPE_SUCCESS;
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -98,7 +108,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
 
     @Override
     protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
+//        super.onProgressUpdate(values);
         int progress = values[0];
         if (progress > lastProgress){
             listener.onProgress(progress);
@@ -109,6 +119,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
     @Override
     protected void onPostExecute(Integer integer) {
 //        super.onPostExecute(integer);
+        if (integer == null) return;
         switch (integer){
             case TYPE_SUCCESS:
                 listener.onSuccess();
@@ -143,7 +154,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                 .build();
         Response response = client.newCall(request).execute();
         if (response != null&&response.isSuccessful()){
-            long contentLength = request.body().contentLength();
+            long contentLength = response.body().contentLength();
             response.close();
             return contentLength;
         }

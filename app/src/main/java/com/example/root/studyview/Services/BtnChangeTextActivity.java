@@ -99,7 +99,7 @@ public class BtnChangeTextActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_startdown:
-                String url = "https://down.360safe.com/instbeta.exe";
+                String url = "https://mirrors.tuna.tsinghua.edu.cn/centos/filelist.gz";
                 downloadBinder.startDownload(url);
                 break;
 
