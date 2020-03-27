@@ -46,6 +46,7 @@ public class BtnChangeTextActivity extends AppCompatActivity implements View.OnC
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            downloadBinder = (DownloadService.DownloadBinder)iBinder;
         }
 
         @Override
@@ -81,6 +82,10 @@ public class BtnChangeTextActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onClick(View view) {
+        if (downloadBinder == null){
+            return;
+        }
+
         switch (view.getId()){
             case R.id.btn_change_text:
                 new Thread(new Runnable() {
@@ -94,15 +99,16 @@ public class BtnChangeTextActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_startdown:
-                String url = "http://www.baidu.com";
+                String url = "https://down.360safe.com/instbeta.exe";
+                downloadBinder.startDownload(url);
                 break;
 
             case R.id.btn_pausedown:
-
+                downloadBinder.pauseDownload();
                 break;
 
             case R.id.btn_canceldown:
-
+                downloadBinder.cancelDownload();
                 break;
 
             default:
@@ -122,5 +128,11 @@ public class BtnChangeTextActivity extends AppCompatActivity implements View.OnC
                 break;
                 default:
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(connection);
     }
 }
