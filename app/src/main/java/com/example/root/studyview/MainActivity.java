@@ -1,11 +1,19 @@
 package com.example.root.studyview;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.root.studyview.Baidu.BaiduLocationActivity;
 import com.example.root.studyview.BroadcastTest.StartLoginActivity;
 import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
@@ -14,6 +22,9 @@ import com.example.root.studyview.Notification.MyNotificationActivity;
 import com.example.root.studyview.Services.BtnChangeTextActivity;
 import com.example.root.studyview.Web.JsonViewActivity;
 import com.example.root.studyview.Web.WebViewAcitvity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /***
  *            .,,       .,:;;iiiiiiiii;;:,,.     .,,
@@ -50,6 +61,7 @@ import com.example.root.studyview.Web.WebViewAcitvity;
  */
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private Button btn1;
     private Button btn2;
@@ -60,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btn7;
     private Button btn8;
     private Button btn9;
+    private Button btn10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         btn7 = (Button) findViewById(R.id.btn7);
         btn8 = (Button) findViewById(R.id.btn8);
         btn9 = (Button) findViewById(R.id.btn9);
+        btn10 = (Button) findViewById(R.id.btn10);
 
         btn1.setOnClickListener(new onClickListenerClass());
         btn2.setOnClickListener(new onClickListenerClass());
@@ -85,6 +99,56 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(new onClickListenerClass());
         btn8.setOnClickListener(new onClickListenerClass());
         btn9.setOnClickListener(new onClickListenerClass());
+        btn10.setOnClickListener(new onClickListenerClass());
+
+        List<String> permissionList = checkpermission();
+
+        if (!permissionList.isEmpty()){
+            requsetPermission(permissionList);
+        }
+    }
+
+    public List<String> checkpermission(){
+        List<String> permissionList = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+            Log.i(TAG, "checkpermission: @1");
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)!= PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.READ_PHONE_STATE);
+            Log.i(TAG, "checkpermission: @2");
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            Log.i(TAG, "checkpermission: @3");
+        }
+        return permissionList;
+    }
+
+    public void requsetPermission(List<String> permissionList){
+        String [] permissons = permissionList.toArray(new String[permissionList.size()]);
+        ActivityCompat.requestPermissions(this, permissons, 1);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case 1:
+                if (grantResults.length > 0) {
+                    for (int result :grantResults){
+                        if (PackageManager.PERMISSION_GRANTED != result){
+                            Toast.makeText(this, "需要全部同意权限", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                }else {
+                    Toast.makeText(this, "你死不承认", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+        }
     }
 
     private class onClickListenerClass implements Button.OnClickListener{
@@ -116,6 +180,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }else if (view == btn9){// 进入通知
                 Intent intent = new Intent(MainActivity.this, BtnChangeTextActivity.class);
+                startActivity(intent);
+            }else if (view == btn10){// 进入通知
+                Intent intent = new Intent(MainActivity.this, BaiduLocationActivity.class);
                 startActivity(intent);
             }
         }

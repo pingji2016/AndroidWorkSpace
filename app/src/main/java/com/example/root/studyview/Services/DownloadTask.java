@@ -14,6 +14,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+/*
+* 在默认情况下HttpURLConnection 使用 gzip方式获取，文件 getContentLength() 这个方法，每次read完成后可以获得，当前已经传送了多少数据，而不能用这个方法获取需要传送多少字节的内容，当read() 返回 -1时，读取完成。
+
+    因此要取得正确的文件长度，要求http请求不要gzip压缩。
+* */
 public class DownloadTask extends AsyncTask<String, Integer, Integer> {
     private static final String TAG = "DownloadTask";
 
@@ -53,7 +58,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
 
             if (0 == contentLength){
                 return TYPE_FAILED;
-            }else if (contentLength == downloadLength){
+            }else if (contentLength >= downloadLength){
                 return TYPE_SUCCESS;
             }
 
@@ -70,7 +75,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                 savedFile.seek(downloadLength);
                 byte[] b = new byte[1024];
                 int total = 0;
-                int len = is.read(b);
+                int len ;
 
                 while ((len = is.read(b))!= -1){
                     if (isCanceled){
@@ -79,7 +84,6 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                         total += len;
                         savedFile.write(b, 0 ,len);
                         int progerss = (int)((total + downloadLength)*100 / contentLength);
-                        Log.i(TAG, "doInBackground: @#@#@");
                         publishProgress(progerss);
                     }
                 }
@@ -103,7 +107,7 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
                 e.printStackTrace();
             }
         }
-        return null;
+        return TYPE_FAILED;
     }
 
     @Override
