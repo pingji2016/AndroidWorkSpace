@@ -100,34 +100,6 @@ public class MainActivity extends AppCompatActivity {
         btn8.setOnClickListener(new onClickListenerClass());
         btn9.setOnClickListener(new onClickListenerClass());
         btn10.setOnClickListener(new onClickListenerClass());
-
-        List<String> permissionList = checkpermission();
-
-        if (!permissionList.isEmpty()){
-            requsetPermission(permissionList);
-        }
-    }
-
-    public List<String> checkpermission(){
-        List<String> permissionList = new ArrayList<>();
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED){
-            permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
-            Log.i(TAG, "checkpermission: @1");
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)!= PackageManager.PERMISSION_GRANTED){
-            permissionList.add(Manifest.permission.READ_PHONE_STATE);
-            Log.i(TAG, "checkpermission: @2");
-        }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
-            permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
-            Log.i(TAG, "checkpermission: @3");
-        }
-        return permissionList;
-    }
-
-    public void requsetPermission(List<String> permissionList){
-        String [] permissons = permissionList.toArray(new String[permissionList.size()]);
-        ActivityCompat.requestPermissions(this, permissons, 1);
     }
 
     @Override
