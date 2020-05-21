@@ -17,6 +17,7 @@ import com.example.root.studyview.Baidu.BaiduLocationActivity;
 import com.example.root.studyview.BroadcastTest.StartLoginActivity;
 import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
+import com.example.root.studyview.MaterialDesign.MyToolBarActivity;
 import com.example.root.studyview.NewsPackage.NewsContentActivity;
 import com.example.root.studyview.Notification.MyNotificationActivity;
 import com.example.root.studyview.Services.BtnChangeTextActivity;
@@ -73,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btn8;
     private Button btn9;
     private Button btn10;
+    private Button btn11;
+    private Button btn12;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         btn8 = (Button) findViewById(R.id.btn8);
         btn9 = (Button) findViewById(R.id.btn9);
         btn10 = (Button) findViewById(R.id.btn10);
+        btn11 = (Button) findViewById(R.id.btn11);
+        btn12 = (Button) findViewById(R.id.btn12);
 
         btn1.setOnClickListener(new onClickListenerClass());
         btn2.setOnClickListener(new onClickListenerClass());
@@ -100,6 +105,8 @@ public class MainActivity extends AppCompatActivity {
         btn8.setOnClickListener(new onClickListenerClass());
         btn9.setOnClickListener(new onClickListenerClass());
         btn10.setOnClickListener(new onClickListenerClass());
+        btn11.setOnClickListener(new onClickListenerClass());
+        btn12.setOnClickListener(new onClickListenerClass());
     }
 
     @Override
@@ -154,6 +161,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, BtnChangeTextActivity.class);
                 startActivity(intent);
             }else if (view == btn10){// 进入通知
+                Intent intent = new Intent(MainActivity.this, BaiduLocationActivity.class);
+                startActivity(intent);
+            }else if (view == btn11){// 进入通知
+                Intent intent = new Intent(MainActivity.this, MyToolBarActivity.class);
+                startActivity(intent);
+            }else if (view == btn12){// 进入通知
                 Intent intent = new Intent(MainActivity.this, BaiduLocationActivity.class);
                 startActivity(intent);
             }
