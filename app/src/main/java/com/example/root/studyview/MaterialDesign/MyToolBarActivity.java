@@ -1,7 +1,9 @@
 package com.example.root.studyview.MaterialDesign;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -25,11 +27,23 @@ public class MyToolBarActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
         ActionBar actionBar = getSupportActionBar();
+        NavigationView navigationView=(NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setCheckedItem(R.id.profile);
         if (actionBar != null) {
             //显示导航按钮
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.menu);
         }
+
+        //绑定菜单项点击事件
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                //关闭滑动菜单
+                drawerLayout.closeDrawers();
+                return true;
+            }
+        });
     }
 
     @Override
