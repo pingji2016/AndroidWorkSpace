@@ -17,6 +17,7 @@ import com.example.root.studyview.Baidu.BaiduLocationActivity;
 import com.example.root.studyview.BroadcastTest.StartLoginActivity;
 import com.example.root.studyview.ContentProvider.ReadPhoneActivity;
 import com.example.root.studyview.FileAndDb.EditBoxSaveActivity;
+import com.example.root.studyview.MaterialDesign.MyFloatingButtonActivity;
 import com.example.root.studyview.MaterialDesign.MyToolBarActivity;
 import com.example.root.studyview.NewsPackage.NewsContentActivity;
 import com.example.root.studyview.Notification.MyNotificationActivity;
@@ -167,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MyToolBarActivity.class);
                 startActivity(intent);
             }else if (view == btn12){// 进入通知
-                Intent intent = new Intent(MainActivity.this, BaiduLocationActivity.class);
+                Intent intent = new Intent(MainActivity.this, MyFloatingButtonActivity.class);
                 startActivity(intent);
             }
         }
